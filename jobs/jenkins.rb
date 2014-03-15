@@ -1,6 +1,6 @@
-jenkins_host = 'augustus'
-img_path = '/static/foo/images/48x48/'
-port = 8080
+jenkins_host = 'https://build.vistacore.us'
+img_path = '/static/12429cfa/images/48x48/'
+port = 80
 
 last_builds = {}
 
