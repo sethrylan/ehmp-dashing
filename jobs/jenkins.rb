@@ -29,7 +29,7 @@ SCHEDULER.every '10s', :first_in => 0 do |foo|
     # end
     coverage = 0.20
 
-    color = job['color'].gsub('blue', 'green').gsub('disabled', 'grey')
+    color = job['color'].gsub('blue', 'green')
     icon = job['color'].gsub('disabled', 'grey')
 
     status = case color
@@ -37,7 +37,6 @@ SCHEDULER.every '10s', :first_in => 0 do |foo|
                when 'green' then 'Success'
                when 'yellow' then 'Unstable'
                when 'disabled' then 'Disabled'
-               when 'grey' then 'Disabled'
                when 'aborted' then 'Aborted'
                when 'green_anime' then 'Building'
                when 'red_anime' then 'Building'
