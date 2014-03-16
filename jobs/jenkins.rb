@@ -1,5 +1,3 @@
-require "net/https"
- 
 jenkins_host = 'build.vistacore.us'
 img_path = '/static/foo/images/48x48/'
 port = 443
