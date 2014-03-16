@@ -15,7 +15,7 @@ SCHEDULER.every '10s', :first_in => 0 do |foo|
 
   builds = []
 
-  jobs.select{|j| j['name']=~/ehmp/}.map! do |job|
+  jobs.select{ |j| j['name']=~/ehmp/ && (j['name']=~/infrastructure/ || j['name']=~/next/) }.map! do |job|
     name = job['name']
     # other health reports: /job/#{name}/api/json?pretty=true&tree=healthReport[description,iconUrl,score]
     coverage_path = "/job/#{name}/lastBuild/cobertura/api/json?depth=2&tree=results[elements[name,ratio]]"
