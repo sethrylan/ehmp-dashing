@@ -1,15 +1,15 @@
 // ----------------------------------------------------------------------------
 // Sass declarations
 // ----------------------------------------------------------------------------
-$background-color:      #12b0c5;
+$background-color:    #3b3b3b;
 $title-color:       	rgba(255, 255, 255, 0.7);
 
-$commit_message-color:  #fff;
-$commit_id-color:	rgba(0, 0, 0, 0.6);
-$moreinfo-color:    	rgba(255, 255, 255, 0.7);
-$timestamp-color:    	rgba(255, 255, 255, 0.8);
-$author-color:    	rgba(255, 255, 255, 0.9);
-$commit_file_color:     rgba(0, 0, 0, 0.5);
+$commit_message-color:  rgba(255, 255, 255, 0.8);
+$commit_id-color:	      rgba(255, 255, 255, 0.8);
+$moreinfo-color:        rgba(255, 255, 255, 0.8);
+$timestamp-color:       rgba(255, 255, 255, 0.8);
+$author-color:          rgba(255, 255, 255, 0.8);
+$commit_file_color:     rgba(255, 255, 255, 0.8);
 
 // ----------------------------------------------------------------------------
 // Widget-jenkinslastcommit styles
@@ -74,7 +74,7 @@ $commit_file_color:     rgba(0, 0, 0, 0.5);
   .commit_file {
     margin-left: 50px;  
     color: $commit_file_color;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 600;
   }
   
