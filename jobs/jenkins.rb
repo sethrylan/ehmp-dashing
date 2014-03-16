@@ -9,6 +9,7 @@ SCHEDULER.every '10s', :first_in => 0 do |foo|
   http.use_ssl = true
   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
+  # more selective url: /view/ehmp/api/json?pretty=true&depth=1&tree=views[jobs[name,url,color]]
   response = http.request(Net::HTTP::Get.new("/api/json"))
   jobs = JSON.parse(response.body)["jobs"]
 
@@ -16,18 +17,18 @@ SCHEDULER.every '10s', :first_in => 0 do |foo|
 
   jobs.select{|j| j['name']=~/ehmp/}.map! do |job|
     name = job['name']
-    # cov_path = "/job/#{name}/lastBuild/cobertura/api/json?depth=2"
-    # response = http.request(Net::HTTP::Get.new(cov_path))
-    # coverage = nil
-    # if response.code == '200'
-    #   elements = JSON.parse(response.body)['results']['elements']
-    #   elements.map! do |element|
-    #     if element['name'] == 'Conditionals'
-    #       coverage = element['ratio']
-    #     end
-    #   end
-    # end
-    coverage = 0.20
+    # other health reports: /job/#{name}/api/json?pretty=true&tree=healthReport[description,iconUrl,score]
+    coverage_path = "/job/#{name}/lastBuild/cobertura/api/json?depth=2&tree=results[elements[name,ratio]]"
+    response = http.request(Net::HTTP::Get.new(coverage_path))
+    coverage = nil
+    if response.code == '200'
+      elements = JSON.parse(response.body)['results']['elements']
+      elements.map! do |element|
+        if element['name'] == 'Conditionals'
+          coverage = element['ratio']
+        end
+      end
+    end
 
     color = job['color'].gsub('blue', 'green')
     icon = job['color'].gsub('disabled', 'grey')
@@ -45,7 +46,6 @@ SCHEDULER.every '10s', :first_in => 0 do |foo|
                when 'yellow_anime' then 'Building'
                else 'Failure'
              end
-    # status = 'Success'
     # icon_url = job['healthReport'][0]['iconUrl']
     # health_url = "#{jenkins_host}:#{port}#{img_path}#{icon_url}"
     health_url = "https://build.vistacore.us/static/12429cfa/images/48x48/#{icon}.png"
