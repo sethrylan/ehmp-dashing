@@ -38,6 +38,7 @@ $commit_file_color:     rgba(255, 255, 255, 0.8);
 
   .list-nostyle {
     list-style: none;
+    width: 100%;
   }
 
   .commit_id {
@@ -66,7 +67,7 @@ $commit_file_color:     rgba(255, 255, 255, 0.8);
   
   .author {
     float: right;
-    margin-right: 12px;
+    margin-right: 50px;
     font-weight: 600;
     color: $author-color;
     font-size: 20px;
