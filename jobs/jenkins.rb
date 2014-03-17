@@ -48,7 +48,7 @@ SCHEDULER.every '15s', :first_in => 0 do |foo|
              end
     # icon_url = job['healthReport'][0]['iconUrl']
     # health_url = "#{jenkins_host}:#{port}#{img_path}#{icon_url}"
-    health_url = "https://build.vistacore.us/static/12429cfa/images/48x48/#{icon}.png"
+    health_url = "https://build.vistacore.us/static/12429cfa/images/48x48/#{icon}.#{color =~ /anime/ ? 'gif' : 'png'}"
     # desc = job['description']
     desc = 'Description'
 
