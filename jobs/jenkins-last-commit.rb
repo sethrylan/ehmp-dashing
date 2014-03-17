@@ -48,7 +48,7 @@ end
 
 
 #scheduled job
-SCHEDULER.every '10s' do
+SCHEDULER.every '15s' do
   commit_info = get_json_for_job_changeset(JENKINS_JOB_TO_BE_MONITORED)
   commit_items = commit_info["items"]
   

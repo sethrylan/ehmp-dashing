@@ -4,7 +4,7 @@ port = 443
 
 last_builds = {}
 
-SCHEDULER.every '10s', :first_in => 0 do |foo|
+SCHEDULER.every '15s', :first_in => 0 do |foo|
   http = Net::HTTP.new(jenkins_host, port)
   http.use_ssl = true
   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
