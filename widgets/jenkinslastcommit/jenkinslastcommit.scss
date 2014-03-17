@@ -16,6 +16,10 @@ $commit_file_color:     rgba(255, 255, 255, 0.8);
 // ----------------------------------------------------------------------------
 .widget-jenkinslastcommit {
 
+  .list-nostyle {
+    width: 650px;
+  }
+
   background-color: $background-color;
   vertical-align: top;
 
