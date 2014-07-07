@@ -15,7 +15,18 @@ SCHEDULER.every '15s', :first_in => 0 do |foo|
 
   builds = []
 
-  jobs.select{ |j| j['name']=~/ehmp/ && (j['name']=~/infrastructure/ || j['name']=~/next/) }.map! do |job|
+  matches = %w(
+    ehmp-acceptance-test-build-next
+    ehmp-integration-test-build-next
+    ehmp-deploy-demo-build-next
+    ehmp-dev-build-next
+    ehmp-infrastructure-codequality
+    adk-acceptance-test-build-next
+    adk-dev-build-next
+    ehmp-performance-test-build-next
+  )
+
+  jobs.select{ |j| matches.include?(j['name']) }.map! do |job|
     name = job['name']
     # other health reports: /job/#{name}/api/json?pretty=true&tree=healthReport[description,iconUrl,score]
     coverage_path = "/job/#{name}/lastBuild/cobertura/api/json?depth=2&tree=results[elements[name,ratio]]"
