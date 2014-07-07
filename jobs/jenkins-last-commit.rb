@@ -45,7 +45,6 @@ def get_json_for_job_changeset(job_name, build = 'lastBuild')
   JSON.parse(response.body)
 end
 
-
 # scheduled job
 SCHEDULER.every '15s' do
   commit_info = get_json_for_job_changeset(JENKINS_JOB_TO_BE_MONITORED)
@@ -82,7 +81,7 @@ SCHEDULER.every '15s' do
     affected_items = Array.new
 
     # add key-value pair for each file found
-    file_items.sort.each { |x| affected_items.push( {:file_name => x} ) }
+    file_items.sort.each { |x| affected_items.push( { :file_name => x } ) }
 
     # trim file list length if necessary
     if affected_items.length > FILE_LIST_TRIM_LENGTH
@@ -90,7 +89,7 @@ SCHEDULER.every '15s' do
       affected_items = affected_items.slice(0, FILE_LIST_TRIM_LENGTH)
 
       # add indication of total number of affected files
-      affected_items[FILE_LIST_TRIM_LENGTH] = {:file_name => '  ...  (' + length.to_s + ' files in total)'}
+      affected_items[FILE_LIST_TRIM_LENGTH] = { :file_name => '  ...  (' + length.to_s + ' files in total)'}
     end
 
     json_formatted_data = Hash.new
