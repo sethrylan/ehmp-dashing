@@ -41,26 +41,30 @@ SCHEDULER.every '15s', :first_in => 0 do |foo|
       end
     end
 
-    color = job['color'].gsub('blue', 'green')
-    icon = job['color'].gsub('disabled', 'grey')
+    # Corrections for Jenkins icon customization
+    icon = job['color'].gsub('disabled', 'grey').gsub('aborted', 'grey')
+    color = job['color'].gsub('blue', 'green').gsub('red_anime', 'red').gsub('gray_anime', 'gray').gsub('green_anime', 'green').gsub('aborted_anime', 'gray')
 
-    status = case color
+    status = case icon
                when 'red' then 'Failed'
+               when 'blue' then 'Success'
                when 'green' then 'Success'
                when 'yellow' then 'Unstable'
                when 'disabled' then 'Disabled'
                when 'aborted' then 'Aborted'
+               when 'blue_anime' then 'Building'
                when 'green_anime' then 'Building'
                when 'red_anime' then 'Building'
-               when 'gray_anime' then 'Building'
+               when 'grey_anime' then 'Building'
                when 'aborted_anime' then 'Building'
                when 'yellow_anime' then 'Building'
                else 'Failure'
              end
+
     # icon_url = job['healthReport'][0]['iconUrl']
     # health_url = "#{jenkins_host}:#{port}#{img_path}#{icon_url}"
-    health_url = "https://build.vistacore.us/static/12429cfa/images/48x48/#{icon}.#{color =~ /anime/ ? 'gif' : 'png'}"
     # desc = job['description']
+    health_url = "https://build.vistacore.us/static/12429cfa/images/48x48/#{icon}.#{icon =~ /anime/ ? 'gif' : 'png'}"
     desc = 'Description'
 
     build = {
