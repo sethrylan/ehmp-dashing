@@ -14,7 +14,7 @@ bundle exec thin start -R config.ru -e production -p <port>
 ```
 Like Heroku with Procfile
 ```
-bundle exec passenger start -p <port> --spawn-method conservative
+bundle exec passenger start -p 22222 --spawn-method conservative
 ```
 
 #### Deploy
