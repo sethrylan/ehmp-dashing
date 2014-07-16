@@ -23,6 +23,7 @@ SCHEDULER.every '15s', first_in: 0 do |foo|
     adk-acceptance-test-build-next
     adk-dev-build-next
     ehmp-performance-test-build-next
+    ehmp-ui-dev-build-next
   )
 
   jobs.select { |j| matches.include?(j['name']) }.map! do |job|
