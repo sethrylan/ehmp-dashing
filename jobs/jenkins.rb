@@ -30,6 +30,8 @@ SCHEDULER.every '15s', first_in: 0 do |foo|
     name = job['name']
     # other health reports: /job/#{name}/api/json?pretty=true&tree=healthReport[description,iconUrl,score]
     coverage_path = "/job/#{name}/lastBuild/cobertura/api/json?depth=2&tree=results[elements[name,ratio]]"
+    last_success_path = "/job/#{name}/lastSuccessfulBuild/api/json"
+
     response = http.request(Net::HTTP::Get.new(coverage_path))
     coverage = nil
     if response.code == '200'
@@ -37,6 +39,11 @@ SCHEDULER.every '15s', first_in: 0 do |foo|
       elements.map! do |element|
         coverage = element['ratio'] if element['name'] == 'Conditionals'
       end
+    end
+
+    response = http.request(Net::HTTP::Get.new(last_success_path))
+    if response.code == '200'
+      elapsed_minutes = JSON.parse(response.body)['duration'] / 60_000
     end
 
     # Corrections for Jenkins icon customization
@@ -59,6 +66,7 @@ SCHEDULER.every '15s', first_in: 0 do |foo|
              else 'Failure'
            end
 
+    # Other attributes in json API:
     # icon_url = job['healthReport'][0]['iconUrl']
     # img_path = '/static/foo/images/48x48/'
     # health_url = "#{jenkins_host}:#{port}#{img_path}#{icon_url}"
@@ -71,7 +79,8 @@ SCHEDULER.every '15s', first_in: 0 do |foo|
       health: health_url,
       color: color,
       desc: 'Description',
-      coverage: coverage ? coverage.to_i.to_s + '%' : ''
+      coverage: coverage ? coverage.to_i.to_s + '%' : '',     # convert to whole number string
+      elapsed: elapsed_minutes ? elapsed_minutes.to_s + ' min' : ''
     }
     builds << build
   end

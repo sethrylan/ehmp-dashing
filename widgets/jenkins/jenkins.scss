@@ -62,7 +62,7 @@ $moreinfo-color:    rgba(255, 255, 255, 0.8);
   .name {
     color: $label-color;
     font-weight: 600;
-    width: 650px;
+    width: 520px;
   }
 
   .status {
@@ -76,7 +76,10 @@ $moreinfo-color:    rgba(255, 255, 255, 0.8);
 
   .coverage {
     width: 60px;
-    margin-right: 0;
+  }
+
+  .elapsed {
+    width: 120px;
   }
 
   .updated-at {
