@@ -64,13 +64,15 @@ SCHEDULER.every '15s', first_in: 0 do |foo|
     # health_url = "#{jenkins_host}:#{port}#{img_path}#{icon_url}"
     # desc = job['description']
     health_url = "https://build.vistacore.us/static/12429cfa/images/48x48/#{icon}.#{icon =~ /anime/ ? 'gif' : 'png'}"
-    desc = 'Description'
 
     build = {
-      name: name, status: status, health: health_url, color: color
+      name: name,
+      status: status,
+      health: health_url,
+      color: color,
+      desc: 'Description',
+      coverage: coverage ? coverage.to_i.to_s + '%' : ''
     }
-    desc.empty? || build['desc'] = desc
-    coverage && build['coverage'] = coverage.to_i.to_s + '%'
     builds << build
   end
 
