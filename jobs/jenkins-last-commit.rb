@@ -2,6 +2,8 @@ require 'net/http'
 require 'json'
 require 'time'
 
+log = Logger.new(STDOUT)
+
 ##################
 #widget constants
 ##################
@@ -95,7 +97,7 @@ SCHEDULER.every '15s' do
     json_formatted_data = Hash.new
     json_formatted_data[0] = { id: commit_id, timestamp: commit_date, message: commit_message, author: author_name }
 
-    puts json_formatted_data
+    log.debug json_formatted_data
 
     # send event to dashboard
     send_event('jenkins-last-commit', commit_entries: json_formatted_data.values, commit_files: affected_items)

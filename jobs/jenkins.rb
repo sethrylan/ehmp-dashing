@@ -1,3 +1,5 @@
+
+log = Logger.new(STDOUT)
 jenkins_host = 'build.vistacore.us'
 port = 443
 
@@ -89,7 +91,7 @@ SCHEDULER.every '15s', first_in: 0 do |foo|
   end
 
   if builds != last_builds
-    puts builds
+    log.debug builds
     last_builds = builds
     send_event('jenkins', items: builds)
   end
