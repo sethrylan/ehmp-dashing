@@ -53,7 +53,7 @@ $commit_file_color:     rgba(255, 255, 255, 0.8);
   .commit_message {
     margin-left: 12px;
     font-weight: 600;
-    font-size: 30px;
+    font-size: 26px;
     color: $commit_message-color;
   }
 
@@ -62,7 +62,7 @@ $commit_file_color:     rgba(255, 255, 255, 0.8);
     margin-left: 12px;
     font-weight: 600;
     color: $timestamp-color;
-    font-size: 20px;
+    font-size: 18px;
   }
   
   .author {
@@ -70,13 +70,13 @@ $commit_file_color:     rgba(255, 255, 255, 0.8);
     margin-right: 50px;
     font-weight: 600;
     color: $author-color;
-    font-size: 20px;
+    font-size: 22px;
   }
   
   .commit_file {
     margin-left: 50px;  
     color: $commit_file_color;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
   }
   
