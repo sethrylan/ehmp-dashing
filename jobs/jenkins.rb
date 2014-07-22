@@ -20,10 +20,13 @@ SCHEDULER.every '15s', first_in: 0 do |foo|
     ehmp-deploy-demo-build-next
     ehmp-dev-build-next
     ehmp-infrastructure-codequality
-    adk-acceptance-test-build-next
-    adk-dev-build-next
     ehmp-performance-test-build-next
     ehmp-ui-dev-build-next
+    adk-acceptance-test-build-next
+    adk-dev-build-next
+    rdk-acceptance-test-build-next
+    rdk-dev-build-next
+    rdk-infrastructure-build-next
   )
 
   jobs.select { |j| matches.include?(j['name']) }.map! do |job|

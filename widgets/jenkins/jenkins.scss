@@ -44,19 +44,19 @@ $moreinfo-color:    rgba(255, 255, 255, 0.8);
     border: 0px solid transparent;
     margin-right: 5px;
     display: inline-block;
-    font-size: 26px;
-    padding: 10px 10px;
+    font-size: 23px;
+    padding: 4px 4px;
     background-color: $background-color;
     color: $value-color;
   }
 
   .weather {
-    padding: 9px 9px;
+    padding: 4px 4px;
   }
 
   .weather img {
-    width: 35px;
-    height: 35px;
+    width: 26px;
+    height: 26px;
   }
 
   .name {
