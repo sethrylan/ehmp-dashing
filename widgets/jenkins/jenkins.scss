@@ -9,6 +9,7 @@ $title-color:       rgba(255, 255, 255, 0.8);
 $label-color:       rgba(255, 255, 255, 0.8);
 $moreinfo-color:    rgba(255, 255, 255, 0.8);
 
+$li-padding:        2px 10px 2px 10px;
 
   background-color: transparent;
   vertical-align: top;
@@ -31,7 +32,7 @@ $moreinfo-color:    rgba(255, 255, 255, 0.8);
   }
 
   li {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     overflow: hidden;
   }
 
@@ -42,16 +43,11 @@ $moreinfo-color:    rgba(255, 255, 255, 0.8);
   .line-item {
     height: 100%;
     border: 0px solid transparent;
-    margin-right: 5px;
     display: inline-block;
-    font-size: 23px;
-    padding: 4px 4px;
+    font-size: 30px;
+    padding: $li-padding;
     background-color: $background-color;
     color: $value-color;
-  }
-
-  .weather {
-    padding: 4px 4px;
   }
 
   .weather img {
