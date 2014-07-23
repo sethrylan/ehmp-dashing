@@ -27,6 +27,7 @@ SCHEDULER.every '15s', first_in: 0 do |foo|
     adk-acceptance-test-build-next
     adk-dev-build-next
     rdk-acceptance-test-build-next
+    rdk-integration-test-build-next
     rdk-dev-build-next
     rdk-infrastructure-build-next
   )
